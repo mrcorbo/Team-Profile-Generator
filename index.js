@@ -42,11 +42,42 @@ inquirer
 
             ]).then((data) => {
                 if(data.choices === 'Intern'){
-
+                    addIntern()
                 }else if(data.choices === 'Engineer'){
 
                 }else{
-                    
+
                 }
             })
     }
+function addIntern(){
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                message: `What is the Intern's name?`,
+                name: 'name'
+            },
+            {
+                type: 'input',
+                message: `What is the Intern's id?`,
+                name: 'id'
+            },
+            {
+                type: 'input',
+                message: `What is the Intern's email?`,
+                name: 'email'
+            },
+            {
+                type: 'input',
+                message: "What school does the Intern attend?",
+                name: 'school'
+            }
+        ]).then((data) => {
+            const intern = new Intern(data.name, data.id, data.email, data.school)
+            employees.push(intern)
+            menu()
+        })
+}
+
+function addEngineer()
